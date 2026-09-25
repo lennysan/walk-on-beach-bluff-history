@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Walk-On Beach — bluff &amp; access over time</title>
+  <meta name="description" content="Vertical Google Earth Pro historical imagery of the Walk-On Beach Coastal Access at The Sea Ranch, CA — bluff edge, beach stairs/cove, and shoreline over time." />
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --ink: #1a1f24;
+      --muted: #5c6670;
+      --card: #ffffff;
+      --line: #d9d2c5;
+      --accent: #2c5f6e;
+      --accent-soft: #e8f1f3;
+      --warn-bg: #f7f0e4;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+    header {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 1.25rem;
+    }
+    header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.4rem;
+    }
+    header .sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 42rem;
+      margin: 0;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      margin-top: 1.25rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .meta strong { color: var(--ink); font-weight: 600; }
+    nav.years {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244, 241, 234, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav.years ul {
+      list-style: none;
+      margin: 0 auto;
+      padding: 0.65rem 1rem;
+      max-width: 920px;
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav.years a {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    nav.years a:hover { background: #d5e6ea; }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.25rem;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(26, 31, 36, 0.04);
+    }
+    .panel .panel-head {
+      padding: 1rem 1.15rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    .panel .panel-head h2 {
+      margin: 0 0 0.25rem;
+      font-size: 1.15rem;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      font-family: inherit;
+    }
+    .panel .panel-head p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .compare-gif {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #111;
+    }
+    .takeaways {
+      padding: 1.1rem 1.25rem 1.35rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 0.95rem;
+    }
+    .takeaways .verdict {
+      font-size: 1.05rem;
+      font-weight: 650;
+      margin: 0 0 0.75rem;
+      color: var(--accent);
+    }
+    .takeaways ul {
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+    .takeaways li { margin: 0.45rem 0; }
+    .takeaways .caveat {
+      margin: 1rem 0 0;
+      padding: 0.75rem 0.9rem;
+      background: var(--warn-bg);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    article.frame {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(26, 31, 36, 0.04);
+    }
+    article.frame .label {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      padding: 1rem 1.15rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    article.frame .label h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+    article.frame .label .date {
+      color: var(--muted);
+      font-size: 0.9rem;
+      align-self: center;
+    }
+    article.frame .note {
+      margin: 0;
+      padding: 0 1.15rem 0.9rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    article.frame a.img-wrap { display: block; background: #111; }
+    article.frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    footer {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer p { margin: 0 0 0.5rem; max-width: 42rem; }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Walk-On Beach — bluff &amp; access over time</h1>
+    <p class="sub">Vertical Google Earth Pro historical imagery of the Walk-On Beach Coastal Access at The Sea Ranch, CA (trailhead 40101 Highway 1). Framing is the bluff edge, beach stairs/cove, and shoreline west of the parking lot — not the lot itself.</p>
+    <div class="meta">
+      <span><strong>View</strong> top-down · eye alt 384&nbsp;m</span>
+      <span><strong>Scale</strong> 85&nbsp;m bar</span>
+      <span><strong>Source</strong> Google Earth Pro Historical Imagery</span>
+    </div>
+  </header>
+
+  <nav class="years" aria-label="Jump to section">
+    <ul>
+      <li><a href="#compare">Year flip</a></li>
+      <li><a href="#takeaways">Takeaways</a></li>
+      <li><a href="#y1985">1985</a></li>
+      <li><a href="#y1993">1993</a></li>
+      <li><a href="#y2004">2004</a></li>
+      <li><a href="#y2005a">Jan 2005</a></li>
+      <li><a href="#y2005b">Jun 2005</a></li>
+      <li><a href="#y2009a">May 2009</a></li>
+      <li><a href="#y2009b">Aug 2009</a></li>
+      <li><a href="#y2010">2010</a></li>
+      <li><a href="#y2012">2012</a></li>
+      <li><a href="#y2013">2013</a></li>
+      <li><a href="#y2015">2015</a></li>
+      <li><a href="#y2017a">Jun 2017</a></li>
+      <li><a href="#y2017b">Oct 2017</a></li>
+      <li><a href="#y2018a">Feb 2018</a></li>
+      <li><a href="#y2018b">Sep 2018</a></li>
+      <li><a href="#y2019">2019</a></li>
+      <li><a href="#y2021">2021</a></li>
+      <li><a href="#y2022">2022</a></li>
+      <li><a href="#y2024">2024</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="panel" id="compare">
+      <div class="panel-head">
+        <h2>Year-to-year flip</h2>
+        <p>Loops all 19 frames (1985 → 2024), so the bluff edge, access cove, and shoreline line up in the same crop. Watch the cove at the trail branch and the apron at the foot of the bluff.</p>
+      </div>
+      <img class="compare-gif" src="images/year-compare.gif" alt="Animated comparison of Walk-On Beach aerial imagery cycling through 1985–2024" width="800" height="551" />
+    </section>
+
+    <section class="panel" id="takeaways">
+      <div class="panel-head">
+        <h2>Takeaways (visual read)</h2>
+        <p>Not a survey — a plain-language look at these frames only.</p>
+      </div>
+      <div class="takeaways">
+        <p class="verdict">Sonoma County currently lists the Walk-On Beach stair access as closed due to a landslide; bluff walking north from parking may still be possible.</p>
+        <ul>
+          <li>These frames show the access cove/bluff over ~1985–2024 for visual comparison only.</li>
+          <li>Note apparent shoreline/bluff changes especially comparing ~2022 vs 2024 (debris apron vs more exposed rock) — tide/season/sensor can also change appearance.</li>
+          <li>In the Oct 2022 tile the cove shows a broader gray debris/beach apron; the May 2024 tile shows a rockier, more stripped-looking shoreline at the same cove.</li>
+        </ul>
+        <p class="caveat">Not geologic advice; County / geotech is authority on closure and hazard. This is a desk read of satellite/aerial tiles only.</p>
+      </div>
+    </section>
+
+    <article class="frame" id="y1985">
+      <div class="label">
+        <h2>December 31, 1985</h2>
+        <span class="date">Earliest timeline tile</span>
+      </div>
+      <p class="note">USGS black-and-white frame — earliest available at this framing.</p>
+      <a class="img-wrap" href="images/01-1985-12-31.png" target="_blank" rel="noopener">
+        <img src="images/01-1985-12-31.png" alt="Walk-On Beach aerial, December 31 1985, vertical with 85 meter scale" loading="eager" />
+      </a>
+    </article>
+
+    <article class="frame" id="y1993">
+      <div class="label">
+        <h2>July 12, 1993</h2>
+        <span class="date">Early color era</span>
+      </div>
+      <a class="img-wrap" href="images/02-1993-07-12.png" target="_blank" rel="noopener">
+        <img src="images/02-1993-07-12.png" alt="Walk-On Beach aerial, July 12 1993, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2004">
+      <div class="label">
+        <h2>March 11, 2004</h2>
+        <span class="date">Color imagery</span>
+      </div>
+      <a class="img-wrap" href="images/03-2004-03-11.png" target="_blank" rel="noopener">
+        <img src="images/03-2004-03-11.png" alt="Walk-On Beach aerial, March 11 2004, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2005a">
+      <div class="label">
+        <h2>January 1, 2005</h2>
+        <span class="date">Same-year pair</span>
+      </div>
+      <a class="img-wrap" href="images/04-2005-01-01.png" target="_blank" rel="noopener">
+        <img src="images/04-2005-01-01.png" alt="Walk-On Beach aerial, January 1 2005, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2005b">
+      <div class="label">
+        <h2>June 12, 2005</h2>
+        <span class="date">Same-year pair</span>
+      </div>
+      <a class="img-wrap" href="images/05-2005-06-12.png" target="_blank" rel="noopener">
+        <img src="images/05-2005-06-12.png" alt="Walk-On Beach aerial, June 12 2005, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2009a">
+      <div class="label">
+        <h2>May 25, 2009</h2>
+        <span class="date">Same-year pair</span>
+      </div>
+      <a class="img-wrap" href="images/06-2009-05-25.png" target="_blank" rel="noopener">
+        <img src="images/06-2009-05-25.png" alt="Walk-On Beach aerial, May 25 2009, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2009b">
+      <div class="label">
+        <h2>August 16, 2009</h2>
+        <span class="date">Same-year pair</span>
+      </div>
+      <a class="img-wrap" href="images/07-2009-08-16.png" target="_blank" rel="noopener">
+        <img src="images/07-2009-08-16.png" alt="Walk-On Beach aerial, August 16 2009, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2010">
+      <div class="label">
+        <h2>April 25, 2010</h2>
+        <span class="date">Timeline tile</span>
+      </div>
+      <a class="img-wrap" href="images/08-2010-04-25.png" target="_blank" rel="noopener">
+        <img src="images/08-2010-04-25.png" alt="Walk-On Beach aerial, April 25 2010, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2012">
+      <div class="label">
+        <h2>July 13, 2012</h2>
+        <span class="date">Timeline tile</span>
+      </div>
+      <a class="img-wrap" href="images/09-2012-07-13.png" target="_blank" rel="noopener">
+        <img src="images/09-2012-07-13.png" alt="Walk-On Beach aerial, July 13 2012, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2013">
+      <div class="label">
+        <h2>April 21, 2013</h2>
+        <span class="date">Timeline tile</span>
+      </div>
+      <a class="img-wrap" href="images/10-2013-04-21.png" target="_blank" rel="noopener">
+        <img src="images/10-2013-04-21.png" alt="Walk-On Beach aerial, April 21 2013, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2015">
+      <div class="label">
+        <h2>March 28, 2015</h2>
+        <span class="date">Timeline tile</span>
+      </div>
+      <a class="img-wrap" href="images/11-2015-03-28.png" target="_blank" rel="noopener">
+        <img src="images/11-2015-03-28.png" alt="Walk-On Beach aerial, March 28 2015, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2017a">
+      <div class="label">
+        <h2>June 17, 2017</h2>
+        <span class="date">Denser stretch</span>
+      </div>
+      <a class="img-wrap" href="images/12-2017-06-17.png" target="_blank" rel="noopener">
+        <img src="images/12-2017-06-17.png" alt="Walk-On Beach aerial, June 17 2017, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2017b">
+      <div class="label">
+        <h2>October 31, 2017</h2>
+        <span class="date">Denser stretch</span>
+      </div>
+      <a class="img-wrap" href="images/13-2017-10-31.png" target="_blank" rel="noopener">
+        <img src="images/13-2017-10-31.png" alt="Walk-On Beach aerial, October 31 2017, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2018a">
+      <div class="label">
+        <h2>February 15, 2018</h2>
+        <span class="date">Denser stretch</span>
+      </div>
+      <a class="img-wrap" href="images/14-2018-02-15.png" target="_blank" rel="noopener">
+        <img src="images/14-2018-02-15.png" alt="Walk-On Beach aerial, February 15 2018, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2018b">
+      <div class="label">
+        <h2>September 20, 2018</h2>
+        <span class="date">Denser stretch</span>
+      </div>
+      <a class="img-wrap" href="images/15-2018-09-20.png" target="_blank" rel="noopener">
+        <img src="images/15-2018-09-20.png" alt="Walk-On Beach aerial, September 20 2018, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2019">
+      <div class="label">
+        <h2>November 24, 2019</h2>
+        <span class="date">Denser stretch</span>
+      </div>
+      <a class="img-wrap" href="images/16-2019-11-24.png" target="_blank" rel="noopener">
+        <img src="images/16-2019-11-24.png" alt="Walk-On Beach aerial, November 24 2019, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2021">
+      <div class="label">
+        <h2>February 26, 2021</h2>
+        <span class="date">Timeline tile</span>
+      </div>
+      <a class="img-wrap" href="images/17-2021-02-26.png" target="_blank" rel="noopener">
+        <img src="images/17-2021-02-26.png" alt="Walk-On Beach aerial, February 26 2021, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2022">
+      <div class="label">
+        <h2>October 18, 2022</h2>
+        <span class="date">Pre-closure compare</span>
+      </div>
+      <p class="note">Broader gray debris/beach apron visible in the access cove — useful contrast with 2024.</p>
+      <a class="img-wrap" href="images/18-2022-10-18.png" target="_blank" rel="noopener">
+        <img src="images/18-2022-10-18.png" alt="Walk-On Beach aerial, October 18 2022, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+
+    <article class="frame" id="y2024">
+      <div class="label">
+        <h2>May 2, 2024</h2>
+        <span class="date">Newest imagery</span>
+      </div>
+      <p class="note">More exposed rocky bluff/shoreline at the same cove; newest tile on the Earth Pro timeline.</p>
+      <a class="img-wrap" href="images/19-2024-05-02.png" target="_blank" rel="noopener">
+        <img src="images/19-2024-05-02.png" alt="Walk-On Beach aerial, May 2 2024, vertical with 85 meter scale" loading="lazy" />
+      </a>
+    </article>
+  </main>
+
+  <footer>
+    <p>Prepared for comparing the Walk-On Beach access cove and bluff edge across historical imagery. Click any still for the full-resolution PNG.</p>
+    <p>Imagery © Google / USGS / Airbus via Google Earth Pro. Page updated Sep 25, 2026.</p>
+    <p>Related: <a href="https://lennysan.github.io/solstice-bluff-history/">233 Solstice — bluff edge over time</a></p>
+  </footer>
+</body>
+</html>
